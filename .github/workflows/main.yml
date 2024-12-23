@@ -20,7 +20,7 @@ jobs:
           host: ${{ secrets.EC2_HOST_IP }}
           key: ${{ secrets.SSH_key }}
           script: |
-            cd /home/ubuntu /docker_project
+            cd /home/ubuntu/awstest
             sudu git pull origin main
             sudu docker-compose down
             sudu docker-compose up -d --build
