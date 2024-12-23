@@ -1,0 +1,26 @@
+name: Deploy to EC2 using Docker Compose
+
+on:
+  push:
+    branches:
+    - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        uses: appleboy/ssh-action@master
+        with:
+          username: ubuntu
+          host: ${{ secrets.EC2_HOST_IP }}
+          key: ${{ secrets.SSH_key }}
+          script: |
+            cd /home/ubuntu /docker_project
+            sudu git pull origin main
+            sudu docker-compose down
+            sudu docker-compose up -d --build
