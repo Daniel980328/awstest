@@ -26,7 +26,7 @@ function App() {
   return (
       <>
         {userlist}
-        <h1>신화창조 무적엘지!!</h1>
+        <h2>신화창조 무적엘지!!</h2>
       </>
   );
 }
